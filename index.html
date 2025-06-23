@@ -118,6 +118,10 @@
 					data-src="images/BrainShapeChanges.png" >						
 					</div>		
 					
+					<aside class="notes">
+						Read
+					</aside>
+					
 				</section>
 				
 				<section align="left">
@@ -183,8 +187,7 @@
 					<aside class="notes">
 						<ul>
 						 <li>Accurately recreate neural activity using so-called geometric eigenmodes (local connectivity and curvature) as bases functions</li><br>
-						 <li>Compared against eigenmodes based on connectomes (local, and short- and long-range connections) and EDRs (stochastic exponentially decaying connectivity)</li><br>
-						 <li>The success of the geometric eigenmodes is argued as evidence for the role of wave dynamics in shaping cortical activity</li>
+						 <li>Compared against eigenmodes based on connectomes (local, and short- and long-range connections) and EDRs (stochastic exponentially decaying connectivity)</li><br>						 
 						</ul>
 					</aside>
 										
@@ -244,7 +247,7 @@
 					<ul>
 						<li>Large scale modelling typically based on network methods</li><br>
 						<li>Neural activity is described by a system of differential equations which are coulped via an adjacency matrix</li><br>
-						<li>Typically of the order of 100s nodes</li><br>
+						<li>Typically of the order of 100-1000 nodes</li><br>
 						<li>Describe equation ...</li><br>						
 					</ul>
 					</aside>
@@ -270,7 +273,7 @@
 					<aside class="notes">
 					<ul>
 						<li>For large populations we can assume a continuum approach</li><br>
-						<li>The relationto the previous network model is hopefully clear</li><br>
+						<li>The relation to the previous network model is hopefully clear</li><br>
 						<li>The connectivity matrix is replaced by a connectvity kernel</li><br>
 						<li>The choice shown displays inhibitory connections to nearby neurons and excitatory connections with more distant neurons</li> <br>
 						<li>w(i,j) LR but w(x,y) local connectivity  - so a bit of a disconnect; this is a mathematical convenience</li>					
@@ -366,14 +369,14 @@
 					\[
 					\begin{align*}
 						\qquad\frac{\partial u(\mathbf{x},t)}{\partial t} &= -u(\mathbf{x},t)-a(\mathbf{x},t)\\
-						&+A\int_\Omega w(\mathbf{x},\mathbf{x}')f(u(\mathbf{x},t)-h)\mathrm{d}\mathbf{x}\qquad\\
+						&+A\int_\Omega w(\mathbf{x},\mathbf{x}')f(u(\mathbf{x}',t)-h)\mathrm{d}\mathbf{x}\qquad\\
 						\frac{\partial a(\mathbf{x},t)}{\partial t} &= Bu(\mathbf{x},t)-a(\mathbf{x},t)
 					\end{align*}	
 					\]
 					</textBox>
 							<br>
 					<li class="fragment fade-in"><a href="https://arxiv.org/abs/2504.16342">Ishii and Watanebe, 2025</a> reports pattern dynamics in a neural field equation defined on spheroids using asymptotic methods</li><br>
-					<li class="fragment fade-in"><a href="https://arxiv.org/abs/2504.13379">Shaw <em>et al.</em>, 2025</a> use radial basis functions to approximate NFMs on curved domains</li>
+					<li class="fragment fade-in"><a href="https://arxiv.org/abs/2504.13379">Shaw <em>et al.</em>, 2025</a> use radial basis functions to approximate NFMs on curved domains and fast marching as in our earlier work</li>
 					</leftSide>
 					<rightSide style="width:30%" align="right">	
 					
@@ -385,6 +388,18 @@
 					</rightSide>
 			
 				</ul>
+				
+				<aside class="notes">
+					<ul>
+						<li>We previous solved the following equation on a torus, rat brain and human cortex</li><br>
+						<li>Observed travelling bump solutions with a twist - trapping regions (-ive curvature) and splitting about sharp turns</li><br>
+						<li>Other notable recent works include:</li>
+						<ul>
+							<li>Spheroids - small deformation from a sphere enable asymptotic techniques to be used</li>
+							<li>Numerical approach similar in spirit to our earlier approach and reliant on an underlying mesh</li>
+						</ul>
+					</ul>
+				</aside>
 				
 				</section>
 			</section>
@@ -415,7 +430,7 @@
 						<ul>
 							<li>The figures show isolines from a target point or points for a rabbit, elephant and brain...</li><br>
 							<li>These methods all involve some sort of procedure for solving the Eikonal equation</li><br>
-							<li>Fortunately packages exist that already for his for us...</li>
+							<li>Fortunately packages exist that already do for this for us...</li>
 						</ul>
 					</aside>
 					
@@ -450,6 +465,14 @@
 					height="450"
 					data-src="images/CloudData.png">				
 					</right-side>
+					
+					<aside class="notes">
+						<ul>
+							<li>The idea being that a particle that diffuses from x to y in a short period of time will have had 
+							very little opportunity to deviate from the geodesic connecting them</li><br>							
+							<li>The method can be applied to very general data sets - point clouds as well as triangulations</li>
+						</ul>
+					</aside>
 					
 				
 				</section>
@@ -503,87 +526,29 @@
 						<li>Based on geometric properties and inspired from CAD</li><br>
 						<li>Approach is based on NURBS (Non-Uniform Rational B-Splines), a standard technology in CAD systems</li>
 					</ul>
+					
+					<aside class="notes">
+					<ul>
+					<li>IGA can represent curved geometries more precisely, leading to more accurate simulation results,</li><br>
+					<li>NURBS allow for efficient modeling of both analytical shapes (like circles and cylinders) and 
+					freeform designs (like car bodies) within a single mathematical model</li><br>					
+					<li>Spend the next couple of slides describing the basics in NURBS</li>
+					</ul>
+					</aside>
 		  
 			</section>
 				
 			
 			<!-- B-splines -->
 			<section align="left">
-				<h2>B-Spline Curves</h2>
-				A <em>knot vector</em> is a set of coordinates in parametric space
-				\[
-					\Xi = \left\{\xi_0, \xi_2, \ldots, \xi_{n+p+1}\right\}
-				\]
-				with the $i$-th knot $\xi_i\in\mathbb{R}$, and $n+1$ degree $p$ basis functions
-					
-				<section style="margin-top:10%">		
-					<leftSide style="width:60%;text-align:left">			
-					
-					<p>B-Splines are defined recursively starting with piecewise constants ($p=0$):</p>
-					<textBox touch-action="none">
-					\[
-						\quad N_{i,0}(u) = \begin{cases}1& \text{if } \xi_i\leq u < \xi_{i+1}\\
-						0&\text{otherwise}\end{cases} \quad
-					\]					
-					</textBox>	
-					</leftSide>
-					
-					<rightSide style="width:40%;text-align:left">			
-					
-					<img
-					style="margin:0px;padding:0px;align:center"
-					height="250"
-					data-src="images/BasisZero.png">				
-					</right-side>
-				</section>
-					
-				<section style="margin-top:12.5%">
-					For $p=1,2,\ldots$, we have
-					<textBox touch-action="none">
-					\[
-						\qquad N_{i,p}(u) = \frac{u-\xi_i}{\xi_{i+p}-\xi_i}N_{i,p-1}(u) + \frac{\xi_{i+p+1}-u}{\xi_{i+p+1}-\xi_{i+1}}N_{i+1,p-1}
-						\qquad
-					\]					
-					</textBox>	
-					<img
-					style="margin:20px;padding:0px;align:center"
-					height="225"
-					data-src="images/BasisLin.png">				
-					<img
-					style="margin:20px;padding:0px;align:center"
-					height="225"
-					data-src="images/BasisQuad.png">				
-				</section>
-								
-			</section>
-			
-			<section>
-				
-				<section align="left">
-				<h2>B-Splines Properties</h2>
-				
-				<p>Important properties of B-Splines:</p>
-				
-				<ul>
-					<li>Basis functions of order $k$ are $k-1$ continuous</li><br>
-					<li>B-splines consitute a <em>partition of unity</em> i.e., $\sum_{i=1}^n N_{i,p}(u)=1$</li><br>
-					<li>Each $N_{i,p}$ has only <em>compact support</em> and is contained in the interval $[\xi_i, \xi_{i+p+1}]$</li><br>
-					<li>Each basis function is non-negative consequently all coefficients of the mass matrix computed from 
-					B-Splines are greater than or equal to zero</li><br>
-					<li>Basis functions are interpolatory at the ends of the parametric space $[\xi_i, \xi_{i+p+1}]$, but not, 
-					in general, at the interior knots</li>
-				</ul>
-				</section>
-				
-				<section align="left">
 					<h2>B-Spline Curves</h2>
 					<leftSide style="width:50%;text-align:left">			
-					<p>B-Spline curves in $\mathbb{R}^n$ are a linear combination of B-Spline basis functions</p>
+					<p>B-Spline curves in $\mathbb{R}^N$ are a linear combination of B-Spline basis functions</p>
 					
 					
 					<textBox touch-action="none">
 					\[
-					 \quad C(u) = \sum_{i=1}^nN_{i,p}(u)\mathbf{P}_i \quad
+					 \quad C(u) = \sum_{i=0}^nN_{i,p}(u)\mathbf{P}_i \quad
 					\]					
 					</textBox>
 					
@@ -594,12 +559,12 @@
 					<table>						
 						<thead><tr>
 							<th>$i$</th>
+							<th>0</th>
 							<th>1</th>
 							<th>2</th>
 							<th>3</th>
 							<th>4</th>
 							<th>5</th>
-							<th>6</th>
 						</tr></thead>
 						<tbody><tr>
 							<td>$P_{i,x}$</td>
@@ -627,9 +592,112 @@
 					<rightSide style="width:50%;text-align:left">			
 					<img src="images/BSPLINE_Example.png" height="350">
 					</rightSide>
-				</section>
-				
+					
+					<aside class="notes">
+					<ul>
+						<li>A B-Spline approximates a curve through the use of polynomial 
+						basis functions and control points</li><br>
+						<li>Discuss the figure...</li>
+					</ul>
+					</aside>
+					
 			</section>
+				
+			<section align="left">
+				<h2>B-Spline Curves</h2>
+				A <em>knot vector</em> is a set of coordinates in parametric space
+				\[
+					\Xi = \left\{\xi_0, \xi_1, \ldots, \xi_{n+p+1}\right\}
+				\]
+				with the $i$-th knot $\xi_i\in\mathbb{R}$
+								
+					
+				<section style="margin-top:5%">		
+					<leftSide style="width:60%;text-align:left">			
+					
+					<p>Importantly, the $\xi_i$ are <b>nondecreasing</b></p>
+					
+					<p>B-Splines are defined recursively starting with piecewise constants ($p=0$):</p>
+					<textBox touch-action="none">
+					\[
+						\quad N_{i,0}(u) = \begin{cases}1& \text{if } \xi_i\leq u < \xi_{i+1}\\
+						0&\text{otherwise}\end{cases} \quad
+					\]					
+					</textBox>	
+					</leftSide>
+					
+					<rightSide style="width:40%;text-align:left">			
+					
+					<img
+					style="margin:0px;padding:20px;align:center"
+					height="250"
+					data-src="images/BasisZero.png">				
+					</right-side>
+					
+					
+					<aside class="notes">
+					<ul>
+						<li>A knot vector consists of non-decreasing points in parametric space</li><br>
+						<li>Discuss figure</li>
+						<ul>
+							<li>We have 5 unique knots 0, 0.2, ..., 1</li>
+							<li>On each interval we define the constant zeroth order basis function</li>
+							<li>See box</li>
+						</ul>						
+					</ul>
+					</aside>
+					
+				</section>
+					
+				<section style="margin-top:12.5%">
+					For $p=1,2,\ldots$, we have
+					<textBox touch-action="none">
+					\[
+						\qquad N_{i,p}(u) = \frac{u-\xi_i}{\xi_{i+p}-\xi_i}N_{i,p-1}(u) + \frac{\xi_{i+p+1}-u}{\xi_{i+p+1}-\xi_{i+1}}N_{i+1,p-1}(u)
+						\qquad
+					\]					
+					</textBox>	
+					<img
+					style="margin:20px;padding:0px;align:center"
+					height="225"
+					data-src="images/BasisLin.png">				
+					<img
+					style="margin:20px;padding:0px;align:center"
+					height="225"
+					data-src="images/BasisQuad.png">				
+					
+					<aside class="notes">
+					<ul>
+						<li>Higher order basis functions are then defined recursively ...</li><br>
+						<li> linear and quadratic basis functions are displayed <li>
+					</ul>
+					</aside>
+					
+				</section>
+								
+			</section>
+				
+			<section align="left">
+				<h2>B-Splines Properties</h2>
+				
+				<p>Important properties of B-Splines:</p>
+				
+				<ul>
+					<li>The $\{N_{i,p}\}_{i=0,1,\ldots,n}$ are the $p$-degree B-Spline basis functions</li><br>
+					<li>Basis functions of degree $p$ are at most $p-1$ continuous at internal knots</li><br>
+					<li>B-splines consitute a <em>partition of unity</em> i.e., $\sum_{i=0}^n N_{i,p}(u)=1$</li><br>
+					<li>Each $N_{i,p}$ has only <em>compact support</em> and is contained in the interval $[\xi_i, \xi_{i+p+1}]$</li><br>					
+					<li>It follows that each parameter interval $[\xi_i, \xi_{i+1}]$ has $p+1$ related local bases</li>
+				</ul>
+				
+				<aside class="notes">
+					<ul>
+						<li>READ</li>
+					</ul>
+				</aside>
+					
+			</section>
+			
 			
 			
 			<!-- NURBS -->
@@ -643,8 +711,8 @@
 					<textBox touch-action="none">
 					\[
 					\begin{align*}
-					 \quad C(u) &= \sum_{i=1}^nN_{i,p}(u)\mathbf{P}_i \\
-					 &=\sum_{i=1}^n\frac{N_{i,p}(u)w_i}{\sum_{j}N_{j,p}(u)w_j}\mathbf{P}_i\quad
+					 \quad C(u) &= \sum_{i=0}^nR_{i,p}(u)\mathbf{P}_i \\
+					 &=\sum_{i=0}^n\frac{N_{i,p}(u)w_i}{\sum_{j}N_{j,p}(u)w_j}\mathbf{P}_i\quad
 					 \end{align*}
 					\]					
 					</textBox>								
@@ -654,12 +722,12 @@
 					<table>						
 						<thead><tr>
 							<th>$i$</th>
+							<th>0</th>
 							<th>1</th>
 							<th>2</th>
 							<th>3</th>
 							<th>4</th>
 							<th>5</th>
-							<th>6</th>
 						</tr></thead>
 						<tbody><tr>
 							<td>$P_{i,x}$</td>
@@ -698,6 +766,13 @@
 					<br><br><br>
 					<img src="images/NURBSExample.png" height="350">
 					</rightSide>
+										
+					<aside class="notes">
+					<ul>
+						<li>changing the weights changes the influence of the control points: 
+						increasing moves towards and reducing away from the control point </li>
+					</ul>
+					</aside>
 					
 				</section>
 				
@@ -708,20 +783,29 @@
 				<p>A CAD representation of a surface is expressed using a NURBS geometry as</p>
 				<textBox touch-action="none">
 				\[
-					\qquad\mathbf{x}(\xi,\eta) = \sum_{i=1}^n\sum_{j=1}^mR_{i,j}^{p,q}(\xi,\eta)\mathbf{P}_{i,j}\qquad
+					\qquad\mathbf{x}(\xi,\eta) = \sum_{i=0}^n\sum_{j=0}^mR_{i,j}^{p,q}(\xi,\eta)\mathbf{P}_{i,j}\qquad
 				\]					
 				</textBox>		
 				<p>the $\left\{\mathbf{P}_{i,j}\right\}$ are control points and </p>
 				
 				<textBox touch-action="none">
 				\[
-					\qquad R_{i,j}^{p,q} = \frac{N_{i,p}(\xi)N_{j,q}(\eta)}{\sum_{\hat{i}=1}^n\sum_{\hat{j}=1}^m N_{\hat{i},p}(\xi)
-					N_{\hat{j},q}(\eta)}\qquad
+					\qquad R_{i,j}^{p,q} = \frac{N_{i,p}(\xi)N_{j,q}(\eta)w_{ij}}{\sum_{i'=0}^n\sum_{j'=0}^m N_{i',p}(\xi)
+					N_{j',q}(\eta)w_{i'j'}}\qquad
 				\]			
 				</textBox>	
 
 				<img src="images/Torus_NURBS.png" height="200" style="position:absolute; top: 50%; left:55%">
 				
+				<aside class="notes">
+					<ul>
+						<li>Here x is a point lying on the NURBS surface - xi and eta are points in the unit square 
+						that are used to parameterise our surface</li><br>
+						<li>More complicated surfaces need to be built up from patches - a torus can be paramterised using a single patch</li><br>
+						<li>Discuss figure ...</li>
+					</ul>
+				</aside>
+					
 				</section>
 			
 			</section>			
@@ -741,17 +825,24 @@
 					</textBox>
 					<p>We approximate the unknown function $u(\mathbf{x},t)$ using the same NURBS basis introduced earlier i.e.</p>
 					\[
-						u_h(\mathbf{x},t) = \sum_{i=1}^n\sum_{j=1}^m R_{i,j}^{p,q}(\xi,\eta)u_{i,j}(t)
+						u_h(\mathbf{x},t) = \sum_{i=0}^n\sum_{j=0}^m R_{i,j}^{p,q}(\xi,\eta)u_{i,j}(t)
 					\]
 					Here, the $u_{i,j}(t)$ are unknown control variables, and $u_h$ is our numerical approximation of the solution $u$
+					
+					<aside class="notes">
+					<ul>
+						<li>READ</li>
+					</ul>
+					</aside>
+					
 				</section>
 				
 				<section align="left">
-					<p>Substituting this expression into our NFM and enforcing equality at a set of collocation points $\{\mathbf{x}_k\}_{k=1}^N$ we obtain</p>
+					<p>Substituting this expression into our NFM and enforcing equality at a set of collocation points $\{\mathbf{x}_k\}_{k=0}^N$ we obtain</p>
 					
 					\[
 						\begin{align*}
-						\sum_{i=1}^n\sum_{j=1}^m\frac{\mathrm{d}u_{i,j}(t)}{\mathrm{d}t}R_{i,j}(\mathbf{x}_k) &= -\sum_{i=1}^n\sum_{j=1}^m u_{i,j}(t)R_{i,j}(\mathbf{x}_k)\\
+						\sum_{i=0}^n\sum_{j=0}^m\frac{\mathrm{d}u_{i,j}(t)}{\mathrm{d}t}R_{i,j}(\mathbf{x}_k) &= -\sum_{i=0}^n\sum_{j=0}^m u_{i,j}(t)R_{i,j}(\mathbf{x}_k)\\
 						&+\int_\Omega w(\mathbf{x}_k,\mathbf{x}')f\left(\sum_i\sum_j u_{i,j}(t)R_{i,j}(\mathbf{x}') - h\right)\mathrm{d}\mathbf{x}'
 						\end{align*}
 					\]
@@ -761,7 +852,7 @@
 					<textBox align="center">	
 					\[
 					 \qquad R\frac{\mathrm{d}\mathbf{u}}{\mathrm{d}t} = -R\mathbf{u} + \mathbf{F}(\mathbf{u}), \quad \mathbf{u}\in\mathbb{R}^N, 
-					 ~R\in\mathbb{R}^{N\times N}, ~ N = nm\qquad
+					 ~R\in\mathbb{R}^{N\times N}, ~ N = (n+1)(m+1)\qquad
 					 \]
 					</textBox>
 
@@ -774,6 +865,18 @@
 						<li>The integral is approximated using <b>Gauss-Legendre quadrature</b></li>						
 					</ul>
 					</span>
+					
+					<aside class="notes">
+					<ul>
+						<li>READ</li><br>
+						<li>We can rewrite the above as a system of ODEs by reindexing our unknowns with a single index. 
+						Here F denotes the integral term</li><br>
+						<li>The choice of collocation points is crucial to the performance of IGA-C</li><br>
+						<li>standard choices of p=3 and Greville abscissae here</li><br>
+						<li>Number of quadrature points large enough to converge - no optimisation in what I present today</li>
+					</ul>
+					</aside>
+					
 				</section>
 				
 			</section>
@@ -838,9 +941,9 @@
 					
 					<aside class="notes">
 						<ul>
-							<li>NFM had never previously been solved on a Torus</li><br>
-							<li>To solve we need to change variables as follows ...</li><br>
-							<li>standard methods used on the plane aren't applicable here</li>
+							<li>Comparative analysis against previous results</li><br>
+							<li>Use trapezoidal to solve the integral on a regular mesh</li><br>
+							<li>Not a convolution integral so FFTs no use</li>
 						</ul>
 					</aside>
 					
@@ -877,7 +980,7 @@
 					<aside class="notes">
 						<ul>
 							<li>The first picture shows a heat map representing distance from a fixed point on the inner meridian with brighter colours representing points further away</li><br>
-							<li>The heatmap is a representation of the distance matrix with the (i,j) element giving the distance between nodes i and j on the torus - computed using the MMP algorithm</li><br>
+							<li>The heatmap is a representation of the distance matrix with the (i,j) element giving the distance between nodes i and j on the torus - computed using the heat method</li><br>
 							<li>Side profile of the connectivity function gives it its name</li><br>
 							<li>The wizard hat profile is an idealised connectivity function; our approach allows more general (physiologically realistic) connectivity functions</li>
 						</ul>
@@ -907,8 +1010,9 @@
 							<li>Here we present three sets of results: stationary bump solutions</li><br>
 							<li>These solutions were obtained via direct integration and so represent stable solutions</li><br>
 							<li>The initial conditions for each result are shown in the bottom right figure</li><br>
-							<li>In the top figures a regular grid is used: trapezoidal (LHS); linear collocation (RHS) (of each figure)</li><br>
-							<li>In the bottom figure we show LC for an irregular grid - this important because beyond the torus we won't have access to regular grids (point clouds)</li>							
+							<li>In the top figures a regular grid is used: trapezoidal (LHS); IGA-C (RHS) (of each figure)</li><br>
+							<li>In the bottom figure we show LC for an irregular cloud point (used Rhino software to obtain NURBS surface) - this important because beyond the torus we won't have access to regular grids (point clouds)
+							but also we need to evaluate properties not lying on a mesh (e.g. quadrataure points)</li>							
 						</ul>
 					</aside>
 				</section>
