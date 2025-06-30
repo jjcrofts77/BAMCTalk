@@ -80,8 +80,7 @@
 						<li>Computing Geodesic Distances</li>
 					</ul><br>
 					<li>Solving the NFM with Isogeometric Collocation</li>					
-					<br>
-					<li>Preliminary Results</li><br>
+					<br>					
 					<li>Conclusions and Future Work</li>
 					</span>
 				</ul>	
@@ -213,8 +212,7 @@
 					</ul><br>
 					<span class="fragment semi-fade-out" data-fragment-index="0">
 					<li>Solving the NFM with Isogeometric Collocation</li>					
-					<br>
-					<li>Preliminary Results</li><br>
+					<br>					
 					<li>Conclusions and Future Work</li>
 					</span>
 				</ul>					
@@ -500,8 +498,7 @@
 					</span>
 					<li>Solving the NFM with Isogeometric Collocation</li>					
 					<span class="fragment semi-fade-out" data-fragment-index="0">
-					<br>
-					<li>Preliminary Results</li><br>
+					<br>					
 					<li>Conclusions and Future Work</li>
 					</span>
 				</ul>						
@@ -884,146 +881,7 @@
 				</section>
 				
 			</section>
-			
-			<!-- Outline Slide -->			
-			<section align="left">
-				
-				<h2>Outline</h2>
-				<br>
-				<ul>
-					<span class="fragment semi-fade-out" data-fragment-index="0">
-					<li>Motivation</li><br>					
-					<li>Neural Field Model</li>
-					<ul>
-						<li>Curved Domains</li>
-						<li>Computing Geodesic Distances</li>
-					</ul><br>					
-					<li>Solving the NFM with Isogeometric Collocation</li>					
-					</span>
-					
-					<br>
-					<li>Preliminary Results</li><br>
-					<li class="fragment semi-fade-out" data-fragment-index="0">Conclusions and Future Work</li>
-					
-				</ul>						
-		
-			</section>				
-			<!-- ################################################### -->
-			
-			<!-- ################################################### -->  		
-			<section>
-				<section align="left">
-					<h2>Torus</h2>
-					<div>
-					<leftSide style="width:40%" align="center">	
-					<div align="center">
-					<img src="images/TorusParam.png" height="300" style="padding:0px">								
-					</div>
-					</leftSide>
-				
-					<rightSide style="width:60%" align="left">	
-					<ul>
-						<li>Simplest example of a surface for which analytic geodesics are unavailable</li><br>
-						<li><b style="color:green">For comparison with previous work</b> we also use the standard parameterisation of the torus:</li>
-						\[
-						\left(\theta, \phi\right) \mapsto \left(\begin{array}{c} (R+r\cos{\theta})\cos{\phi}\\(R+r\cos{\theta})\sin{\phi}\\r\sin{\theta} 
-						\end{array}\right) = \left(\begin{array}{c}x\\y\\z 
-						\end{array}\right)
-						\]<br>
-						<li>Here, $R$ and $r$ are respectively the major and minor curvature radii</li><br>
-						<li>We will use the above representation to solve the integral term using trapezoidal method on a 
-						regular discretisation of $[0, 2\pi]^2$</li>
-					</ul>
-					</rightSide>
-					</div>
-					<br>
-				
-					<div>
-						<a style="color:white">e rjiojfqerjvqeiwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</a><br>
-						<p style="color:magenta" class="fragment fade-in">To solve our NFM we deploy the aforementioned numerical methods ...</p>
-					</div>			 	
-					
-					<aside class="notes">
-						<ul>
-							<li>Comparative analysis against previous results</li><br>
-							<li>Use trapezoidal to solve the integral on a regular mesh</li><br>
-							<li>Not a convolution integral so FFTs no use</li>
-						</ul>
-					</aside>
-					
-				</section>
-				
-				<section align="left">
-					<h2>Torus: Connectivity</h2>
-					<ul>
-						<li>Heat method applied to the Torus</li>
-					</ul>
-					<div align="center">
-						<img src="images/MMP_Torus.png" height="300" style="padding:0px">								
-						<img src="images/DistMat.png" height="200" style="padding:50px">								
-					</div>
-					<br>
-					<span class="fragment fade-in">
-					<leftSide style="width:60%" align="center">	
-					<ul>				
-						<li>Wizard hat connectivity kernel</li>
-						<br>
-						<textBox>
-						\[
-							w(\mathbf{x},\mathbf{x}') = e^{-d(\mathbf{x},\mathbf{x}')^2} - 0.17e^{-0.2d(\mathbf{x},\mathbf{x}')^2}
-						\]
-						</textBox>
-					</ul>
-					</leftSide>
-				
-					<rightSide style="width:40%" align="center">	
-					<img src="images/WizardsHat.png" height="150" style="padding:0px">								
-					</rightSide>
-					</span>
-					
-					<aside class="notes">
-						<ul>
-							<li>The first picture shows a heat map representing distance from a fixed point on the inner meridian with brighter colours representing points further away</li><br>
-							<li>The heatmap is a representation of the distance matrix with the (i,j) element giving the distance between nodes i and j on the torus - computed using the heat method</li><br>
-							<li>Side profile of the connectivity function gives it its name</li><br>
-							<li>The wizard hat profile is an idealised connectivity function; our approach allows more general (physiologically realistic) connectivity functions</li>
-						</ul>
-					</aside>
-					
-				</section>
-												
-				<section align="left">
-					<h2>Torus: Solutions</h2>
-					<p>Stationary bump solutions for the Amari equation</p>
-				
-					<div align="center">
-						<img src="images/TorusBumpSolutions.png" height="400" style="padding:0px">								
-					</div>
-					
-					<leftSide style="width:60%" align="center">	
-						<p><strong>Top:</strong> trapezoidal (LHS); isogeometric collocation (RHS)</p>
-						<p><strong>Bottom:</strong> mesh-free isogeometric collocation</p>
-					</leftSide>
-					
-					<rightSide style="width:40%" align="center">	
-						<img src="images/TorusICs.png" height="100" style="padding:20px">				
-					</rightSide>
-					
-					<aside class="notes">
-						<ul>
-							<li>Here we present three sets of results: stationary bump solutions</li><br>
-							<li>These solutions were obtained via direct integration and so represent stable solutions</li><br>
-							<li>The initial conditions for each result are shown in the bottom right figure</li><br>
-							<li>In the top figures a regular grid is used: trapezoidal (LHS); IGA-C (RHS) (of each figure)</li><br>
-							<li>In the bottom figure we show LC for an irregular cloud point (used Rhino software to obtain NURBS surface) - this important because beyond the torus we won't have access to regular grids (point clouds)
-							but also we need to evaluate properties not lying on a mesh (e.g. quadrataure points)</li>							
-						</ul>
-					</aside>
-				</section>
-			</section>	
-			<!-- ################################################### -->  								
-			
-			
+							
 			<!-- Outline Slide -->			
 			<section align="left">
 				
@@ -1040,8 +898,7 @@
 					
 					<li>Solving the NFM with Isogeometric Collocation</li>					
 					
-					<br>
-					<li>Preliminary Results</li><br>
+					<br>					
 					</span>
 					<li>Conclusions and Future Work</li>
 					
