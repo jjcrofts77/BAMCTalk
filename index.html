@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>CM3P Talk 01/07/2025</title>
+		<title>BAMC Talk /04/2026</title>
 		
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -48,9 +48,9 @@
 			<!-- Title Slide -->
 			<section>        
 				<h2>Solving neural field equations on curved surfaces with isogeometric collocation</h2>
-				<p style="font-size:48px">Neekar Mohammed</p>        				
+				<p style="font-size:48px">Jonathan J Crofts</p>        				
 				<p>Nottingham Trent University</p>
-				<p>1st July 2025</p>
+				<p>1st April 2026</p>
 				<div align="center">
 					<img					
 						style="margin:0px;padding:0px;align:center"						
@@ -80,7 +80,8 @@
 						<li>Computing Geodesic Distances</li>
 					</ul><br>
 					<li>Solving the NFM with Isogeometric Collocation</li>					
-					<br>					
+					<br>
+					<li>Results</li><br>
 					<li>Conclusions and Future Work</li>
 					</span>
 				</ul>	
@@ -160,41 +161,6 @@
 					
 				</section>
 				
-				<section align="left">
-					<h2>How does geometry constrain function</h2>
-					
-					<br>
-					
-					<leftSide style="width:50%;text-align:center">	
-					<a href="https://www.nature.com/articles/s41586-023-06098-1">
-					<img					
-						style="margin:0px;padding:0px;align:center"						
-						height="350"
-						data-src="images/BrainEigModes.png">		
-					</a>
-					<a href="https://www.nature.com/articles/s41586-023-06098-1">Pang <em>et al</em>., Nature, 2023</a>
-					</leftSide>
-					
-					<rightSide style="width:50%;text-align:left">	
-						<ul>
-							<li style="color:white"></li> <br>
-							<li>Is geometry a more fundamental constraint than interregional connectivity?</li><br>
-							
-							<li>Study by Pang <em>et al</em> suggests dynamics results from excitation of fundamental, resonant modes - derived from the geometry <b>not</b> the connectivity</li><br>
-							
-							<li>This view is fairly controversial!</li>
-						</ul>
-					
-					</rightSide>
-					
-					<aside class="notes">
-						<ul>
-						 <li>Accurately recreate neural activity using so-called geometric eigenmodes (local connectivity and curvature) as bases functions</li><br>
-						 <li>Compared against eigenmodes based on connectomes (local, and short- and long-range connections) and EDRs (stochastic exponentially decaying connectivity)</li><br>						 
-						</ul>
-					</aside>
-										
-				</section>		
 			</section>
 			
 			
@@ -212,7 +178,8 @@
 					</ul><br>
 					<span class="fragment semi-fade-out" data-fragment-index="0">
 					<li>Solving the NFM with Isogeometric Collocation</li>					
-					<br>					
+					<br>
+					<li>Preliminary Results</li><br>
 					<li>Conclusions and Future Work</li>
 					</span>
 				</ul>					
@@ -444,7 +411,7 @@
 					<leftSide style="width:60%;text-align:left">			
 					
 					<p>Distance between two points $x$ and $y$ on a Riemannian manifold is given by 
-					<a>Varadhan's formula:</a></p>
+					<a><b>Varadhan's formula</b></a>:</p>
 					<br>
 					<textBox touch-action="none">
 					\[
@@ -498,7 +465,8 @@
 					</span>
 					<li>Solving the NFM with Isogeometric Collocation</li>					
 					<span class="fragment semi-fade-out" data-fragment-index="0">
-					<br>					
+					<br>
+					<li>Preliminary Results</li><br>
 					<li>Conclusions and Future Work</li>
 					</span>
 				</ul>						
@@ -539,165 +507,6 @@
 		  
 			</section>
 				
-			
-			<!-- B-splines -->
-			<section align="left">
-					<h2>B-Spline Curves</h2>
-					<leftSide style="width:50%;text-align:left">			
-					<p>B-Spline curves in $\mathbb{R}^N$ are a linear combination of B-Spline basis functions</p>
-					
-					
-					<textBox touch-action="none">
-					\[
-					 \quad C(u) = \sum_{i=0}^nN_{i,p}(u)\mathbf{P}_i \quad
-					\]					
-					</textBox>
-					
-					<br>
-					
-					<p>Control points of sample curve with $p=3$</p>
-					
-					<table>						
-						<thead><tr>
-							<th>$i$</th>
-							<th>0</th>
-							<th>1</th>
-							<th>2</th>
-							<th>3</th>
-							<th>4</th>
-							<th>5</th>
-						</tr></thead>
-						<tbody><tr>
-							<td>$P_{i,x}$</td>
-							<td>0</td>
-							<td>0.3</td>
-							<td>0.3</td>
-							<td>0.5</td>
-							<td>0.9</td>
-							<td>1</td>
-						</tr>
-						<tr>
-							<td>$P_{i,y}$</td>
-							<td>0</td>
-							<td>0.25</td>
-							<td>0.7</td>
-							<td>0.8</td>
-							<td>0.3</td>
-							<td>1</td>
-						</tr></tbody>
-					</table>
-						
-					
-					</leftSide>
-					
-					<rightSide style="width:50%;text-align:left">			
-					<img src="images/BSPLINE_Example.png" height="350">
-					</rightSide>
-					
-					<aside class="notes">
-					<ul>
-						<li>A B-Spline approximates a curve through the use of polynomial 
-						basis functions and control points</li><br>
-						<li>Discuss the figure...</li>
-					</ul>
-					</aside>
-					
-			</section>
-				
-			<section align="left">
-				<h2>B-Spline Curves</h2>
-				A <em>knot vector</em> is a set of coordinates in parametric space
-				\[
-					\Xi = \left\{\xi_0, \xi_1, \ldots, \xi_{n+p+1}\right\}
-				\]
-				with the $i$-th knot $\xi_i\in\mathbb{R}$
-								
-					
-				<section style="margin-top:5%">		
-					<leftSide style="width:60%;text-align:left">			
-					
-					<p>Importantly, the $\xi_i$ are <b>nondecreasing</b></p>
-					
-					<p>B-Splines are defined recursively starting with piecewise constants ($p=0$):</p>
-					<textBox touch-action="none">
-					\[
-						\quad N_{i,0}(u) = \begin{cases}1& \text{if } \xi_i\leq u < \xi_{i+1}\\
-						0&\text{otherwise}\end{cases} \quad
-					\]					
-					</textBox>	
-					</leftSide>
-					
-					<rightSide style="width:40%;text-align:left">			
-					
-					<img
-					style="margin:0px;padding:20px;align:center"
-					height="250"
-					data-src="images/BasisZero.png">				
-					</right-side>
-					
-					
-					<aside class="notes">
-					<ul>
-						<li>A knot vector consists of non-decreasing points in parametric space</li><br>
-						<li>Discuss figure</li>
-						<ul>
-							<li>We have 5 unique knots 0, 0.2, ..., 1</li>
-							<li>On each interval we define the constant zeroth order basis function</li>
-							<li>See box</li>
-						</ul>						
-					</ul>
-					</aside>
-					
-				</section>
-					
-				<section style="margin-top:12.5%">
-					For $p=1,2,\ldots$, we have
-					<textBox touch-action="none">
-					\[
-						\qquad N_{i,p}(u) = \frac{u-\xi_i}{\xi_{i+p}-\xi_i}N_{i,p-1}(u) + \frac{\xi_{i+p+1}-u}{\xi_{i+p+1}-\xi_{i+1}}N_{i+1,p-1}(u)
-						\qquad
-					\]					
-					</textBox>	
-					<img
-					style="margin:20px;padding:0px;align:center"
-					height="225"
-					data-src="images/BasisLin.png">				
-					<img
-					style="margin:20px;padding:0px;align:center"
-					height="225"
-					data-src="images/BasisQuad.png">				
-					
-					<aside class="notes">
-					<ul>
-						<li>Higher order basis functions are then defined recursively ...</li><br>
-						<li> linear and quadratic basis functions are displayed <li>
-					</ul>
-					</aside>
-					
-				</section>
-								
-			</section>
-				
-			<section align="left">
-				<h2>B-Splines Properties</h2>
-				
-				<p>Important properties of B-Splines:</p>
-				
-				<ul>
-					<li>The $\{N_{i,p}\}_{i=0,1,\ldots,n}$ are the $p$-degree B-Spline basis functions</li><br>
-					<li>Basis functions of degree $p$ are at most $p-1$ continuous at internal knots</li><br>
-					<li>B-splines consitute a <em>partition of unity</em> i.e., $\sum_{i=0}^n N_{i,p}(u)=1$</li><br>
-					<li>Each $N_{i,p}$ has only <em>compact support</em> and is contained in the interval $[\xi_i, \xi_{i+p+1}]$</li><br>					
-					<li>It follows that each parameter interval $[\xi_i, \xi_{i+1}]$ has $p+1$ related local bases</li>
-				</ul>
-				
-				<aside class="notes">
-					<ul>
-						<li>READ</li>
-					</ul>
-				</aside>
-					
-			</section>
 			
 			
 			
@@ -784,15 +593,15 @@
 				<p>A CAD representation of a surface is expressed using a NURBS geometry as</p>
 				<textBox touch-action="none">
 				\[
-					\qquad\mathbf{x}(\xi,\eta) = \sum_{i=0}^n\sum_{j=0}^mR_{i,j}^{p,q}(\xi,\eta)\mathbf{P}_{i,j}\qquad
+					\qquad\mathbf{x}(u,v) = \sum_{i=0}^n\sum_{j=0}^mR_{i,j}^{p,q}(u,v)\mathbf{P}_{i,j}\qquad
 				\]					
 				</textBox>		
 				<p>the $\left\{\mathbf{P}_{i,j}\right\}$ are control points and </p>
 				
 				<textBox touch-action="none">
 				\[
-					\qquad R_{i,j}^{p,q} = \frac{N_{i,p}(\xi)N_{j,q}(\eta)w_{ij}}{\sum_{i'=0}^n\sum_{j'=0}^m N_{i',p}(\xi)
-					N_{j',q}(\eta)w_{i'j'}}\qquad
+					\qquad R_{i,j}^{p,q} = \frac{N_{i,p}(u)N_{j,q}(v)w_{ij}}{\sum_{i'=0}^n\sum_{j'=0}^m N_{i',p}(u)
+					N_{j',q}(v)w_{i'j'}}\qquad
 				\]			
 				</textBox>	
 
@@ -800,7 +609,7 @@
 				
 				<aside class="notes">
 					<ul>
-						<li>Here x is a point lying on the NURBS surface - xi and eta are points in the unit square 
+						<li>Here x is a point lying on the NURBS surface - u and v are points in the unit square 
 						that are used to parameterise our surface</li><br>
 						<li>More complicated surfaces need to be built up from patches - a torus can be paramterised using a single patch</li><br>
 						<li>Discuss figure ...</li>
@@ -821,12 +630,12 @@
 					<textBox align="center">	
 					\[						
 						\qquad \frac{\partial u(\mathbf{x},t)}{\partial t} =  -u +
-						\int_\Omega w(\mathbf{x},\mathbf{x}')f\left(u(\mathbf{x}',t)-h\right)\mathrm{d}\mathbf{x}'\qquad
+						\int_\Omega w(d\left(\mathbf{x},\mathbf{x}'\right))f\left(u(\mathbf{x}',t)-h\right)\mathrm{d}\mathbf{x}'\qquad
 					\]
 					</textBox>
 					<p>We approximate the unknown function $u(\mathbf{x},t)$ using the same NURBS basis introduced earlier i.e.</p>
 					\[
-						u_h(\mathbf{x},t) = \sum_{i=0}^n\sum_{j=0}^m R_{i,j}^{p,q}(\xi,\eta)u_{i,j}(t)
+						u_h(\mathbf{x},t) = \sum_{i=0}^n\sum_{j=0}^m R_{i,j}^{p,q}(u,v)u_{i,j}(t)
 					\]
 					Here, the $u_{i,j}(t)$ are unknown control variables, and $u_h$ is our numerical approximation of the solution $u$
 					
@@ -838,13 +647,13 @@
 					
 				</section>
 				
-				<section align="left">
+				<section align="left" style="font-size:22px">
 					<p>Substituting this expression into our NFM and enforcing equality at a set of collocation points $\{\mathbf{x}_k\}_{k=0}^N$ we obtain</p>
 					
 					\[
 						\begin{align*}
 						\sum_{i=0}^n\sum_{j=0}^m\frac{\mathrm{d}u_{i,j}(t)}{\mathrm{d}t}R_{i,j}(\mathbf{x}_k) &= -\sum_{i=0}^n\sum_{j=0}^m u_{i,j}(t)R_{i,j}(\mathbf{x}_k)\\
-						&+\int_\Omega w(\mathbf{x}_k,\mathbf{x}')f\left(\sum_i\sum_j u_{i,j}(t)R_{i,j}(\mathbf{x}') - h\right)\mathrm{d}\mathbf{x}'
+						&+\int_\Omega w(d\left(\mathbf{x}_k,\mathbf{x}'\right))f\left(\sum_i\sum_j u_{i,j}(t)R_{i,j}(\mathbf{x}') - h\right)\mathrm{d}\mathbf{x}'
 						\end{align*}
 					\]
 					<br>
@@ -852,18 +661,20 @@
 					Or &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<textBox align="center">	
 					\[
-					 \qquad R\frac{\mathrm{d}\mathbf{u}}{\mathrm{d}t} = -R\mathbf{u} + \mathbf{F}(\mathbf{u}), \quad \mathbf{u}\in\mathbb{R}^N, 
-					 ~R\in\mathbb{R}^{N\times N}, ~ N = (n+1)(m+1)\qquad
-					 \]
+					 \qquad R_c\frac{\mathrm{d}\mathbf{u}}{\mathrm{d}t} = -R_c\mathbf{u} + f(R_q\mathbf{u}-h), \quad \mathbf{u}\in\mathbb{R}^N, 
+					 ~R_c\in\mathbb{R}^{N\times N},~R_q\in\mathbb{R}^{M\times N}\qquad
+					 \]					 
 					</textBox>
+					<p>Here $N = (n+1)(m+1)$ and $M$ is the number of quadrature points</p>
 
 					</span>
-					<span class="fragment fade-in">
+					
+					<span class="fragment fade-in">					
 					<p style="color: magenta">In our experiments we make the following choices:</p>
 					<ul>
 						<li>We use <b>cubic basis functions</b></li>
 						<li>Collocation points are defined as <b>Greville abscissae</b></li>
-						<li>The integral is approximated using <b>Gauss-Legendre quadrature</b></li>						
+						<li>The integral is approximated using the <b>trapezoidal rule</b></li>						
 					</ul>
 					</span>
 					
@@ -881,7 +692,7 @@
 				</section>
 				
 			</section>
-							
+			
 			<!-- Outline Slide -->			
 			<section align="left">
 				
@@ -894,101 +705,300 @@
 					<ul>
 						<li>Curved Domains</li>
 						<li>Computing Geodesic Distances</li>
-					</ul><br>
-					
+					</ul><br>					
 					<li>Solving the NFM with Isogeometric Collocation</li>					
-					
-					<br>					
 					</span>
-					<li>Conclusions and Future Work</li>
+					
+					<br>
+					<li>Preliminary Results</li><br>
+					<li class="fragment semi-fade-out" data-fragment-index="0">Conclusions and Future Work</li>
 					
 				</ul>						
 		
 			</section>				
 			<!-- ################################################### -->
 			
+			<!-- ################################################### -->  					
+			<section>
+				<section align="left">
+					<h2>Torus</h2>
+					<div>
+					<leftSide style="width:40%" align="center">	
+					<div align="center">
+					<img src="images/TorusParam.png" height="300" style="padding:0px">								
+					</div>
+					</leftSide>
+				
+					<rightSide style="width:60%" align="left">	
+					<ul>
+						<li>Simplest example of a surface for which analytic geodesics are unavailable</li><br>
+						<li><b style="color:green">For comparison with previous work</b> we also use the standard parameterisation of the torus:</li>
+						\[
+						\left(\theta, \phi\right) \mapsto \left(\begin{array}{c} (R+r\cos{\theta})\cos{\phi}\\(R+r\cos{\theta})\sin{\phi}\\r\sin{\theta} 
+						\end{array}\right) = \left(\begin{array}{c}x\\y\\z 
+						\end{array}\right)
+						\]<br>
+						<li>Here, $R$ and $r$ are respectively the major and minor curvature radii</li><br>
+						<li>We will use the above representation to solve the integral term using trapezoidal method on a 
+						regular discretisation of $[0, 2\pi]^2$</li>
+					</ul>
+					</rightSide>
+					</div>
+					<br>
+				
+					<div>
+						<a style="color:white">e rjiojfqerjvqeiwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</a><br>
+						<p style="color:magenta" class="fragment fade-in">To solve our NFM we deploy the aforementioned numerical methods ...</p>
+					</div>			 	
+					
+					<aside class="notes">
+						<ul>
+							<li>Comparative analysis against previous results</li><br>
+							<li>Use trapezoidal to solve the integral on a regular mesh</li><br>
+							<li>Not a convolution integral so FFTs no use</li>
+						</ul>
+					</aside>
+					
+				</section>
+				
+				<section align="left">
+					<h2>Torus: Connectivity</h2>
+					<ul>
+						<li>Heat method applied to the Torus</li>
+					</ul>
+					<div align="center">
+						<img src="images/MMP_Torus.png" height="300" style="padding:0px">								
+						<img src="images/DistMat.png" height="200" style="padding:50px">								
+					</div>
+					<br>
+					<span class="fragment fade-in">
+					<leftSide style="width:60%" align="center">	
+					<ul>				
+						<li>Wizard hat connectivity kernel</li>
+						<br>
+						<textBox>
+						\[
+							w(\mathbf{x},\mathbf{x}') = e^{-d(\mathbf{x},\mathbf{x}')^2} - 0.17e^{-0.2d(\mathbf{x},\mathbf{x}')^2}
+						\]
+						</textBox>
+					</ul>
+					</leftSide>
+				
+					<rightSide style="width:40%" align="center">	
+					<img src="images/WizardsHat.png" height="150" style="padding:0px">								
+					</rightSide>
+					</span>
+					
+					<aside class="notes">
+						<ul>
+							<li>The first picture shows a heat map representing distance from a fixed point on the inner meridian with brighter colours representing points further away</li><br>
+							<li>The heatmap is a representation of the distance matrix with the (i,j) element giving the distance between nodes i and j on the torus - computed using the heat method</li><br>
+							<li>Side profile of the connectivity function gives it its name</li><br>
+							<li>The wizard hat profile is an idealised connectivity function; our approach allows more general (physiologically realistic) connectivity functions</li>
+						</ul>
+					</aside>
+					
+				</section>
+												
+				<section align="left">
+					<h2>Torus: Solutions</h2>
+					<p>Stationary bump solutions for the Amari equation</p>
+				
+					<div align="center">
+						<img src="images/TorusBumpSolutions.png" height="400" style="padding:0px">								
+					</div>
+					
+					<leftSide style="width:60%" align="center">	
+						<p><strong>Top:</strong> trapezoidal (LHS); isogeometric collocation (RHS)</p>
+						<p><strong>Bottom:</strong> mesh-free isogeometric collocation</p>
+					</leftSide>
+					
+					<rightSide style="width:40%" align="center">	
+						<img src="images/TorusICs.png" height="100" style="padding:20px">				
+					</rightSide>
+					
+					<aside class="notes">
+						<ul>
+							<li>Here we present three sets of results: stationary bump solutions</li><br>
+							<li>These solutions were obtained via direct integration and so represent stable solutions</li><br>
+							<li>The initial conditions for each result are shown in the bottom right figure</li><br>
+							<li>In the top figures a regular grid is used: trapezoidal (LHS); IGA-C (RHS) (of each figure)</li><br>
+							<li>In the bottom figure we show LC for an irregular cloud point (used Rhino software to obtain NURBS surface) - this important because beyond the torus we won't have access to regular grids (point clouds)
+							but also we need to evaluate properties not lying on a mesh (e.g. quadrataure points)</li>							
+						</ul>
+					</aside>
+				</section>
+				
+				<section style="font-size:22px; text-align:left;">
+				<h2>Torus: Solutions</h2>
+				<div>
+				<p>Travelling bump solutions for the adaptive Amari equation</p>
+				<leftSide style="width:50%" align="center">	
+					<video height="400"
+					style="padding: 10px; border: 2px solid white"
+					autoplay loop muted controls>
+				<source src="images/TravellingBump_LEFT_INSIDE.mp4" type="video/mp4" />
+				</leftSide>
+					
+				<rightSide style="width:50%" align="center">	
+				<video height="400"
+				style="padding: 10px; border: 2px solid white"
+				autoplay loop muted controls>
+				<source src="images/TravellingBump_UP_INSIDE.mp4" type="video/mp4" />
+				</rightSide>
+															
+			    </section>
+				
+				<section style="font-size:22px; text-align:left;">
+				<h2>Torus: Solutions</h2>
+				<div>
+				<p>Travelling bump solutions for the adaptive Amari equation</p>
+				<leftSide style="width:50%" align="center">	
+					<video height="400"
+					style="padding: 10px; border: 2px solid white"
+					autoplay loop muted controls>
+				<source src="images/TravellingBump_LEFT_OUTSIDE.mp4" type="video/mp4" />
+				</leftSide>
+					
+				<rightSide style="width:50%" align="center">	
+				<video height="400"
+				style="padding: 10px; border: 2px solid white"
+				autoplay loop muted controls>
+				<source src="images/TravellingBump_UP_INSIDE.mp4" type="video/mp4" />
+				</rightSide>
+															
+			    </section>
+				
+				<section style="font-size:22px; text-align:left;">
+				<h2>Torus: Solutions</h2>
+				<div>
+				<p>Travelling bump solutions for the adaptive Amari equation</p>
+				<leftSide style="width:50%" align="center">	
+					<video height="400"
+					style="padding: 10px; border: 2px solid white"
+					autoplay loop muted controls>
+				<source src="images/TravellingBump_DIAG_INSIDE.mp4" type="video/mp4" />
+				</leftSide>
+					
+				<rightSide style="width:50%" align="center">	
+				<video height="400"
+				style="padding: 10px; border: 2px solid white"
+				autoplay loop muted controls>
+				<source src="images/TravellingBump_UP_INSIDE.mp4" type="video/mp4" />
+				</rightSide>
+															
+			    </section>
 			
-			<!-- Conclusions and future work-->
-			<section align="left">
-				<h2>Conclusions and Future Work</h2>
-				<ul>To conclude, we have
-					<ul>					
+			</section>	
+		<!-- ################################################### -->  								
+			
+			
+		<!-- Outline Slide -->			
+		<section align="left">
+				
+			<h2>Outline</h2>
+			<br>
+			<ul>
+				<span class="fragment semi-fade-out" data-fragment-index="0">
+				<li>Motivation</li><br>					
+				<li>Neural Field Model</li>
+				<ul>
+					<li>Curved Domains</li>
+					<li>Computing Geodesic Distances</li>
+				</ul><br>
+				
+				<li>Solving the NFM with Isogeometric Collocation</li>					
+					
+				<br>
+				<li>Preliminary Results</li><br>
+				</span>
+				<li>Conclusions and Future Work</li>
+					
+			</ul>						
+		
+		</section>				
+		<!-- ################################################### -->
+			
+			
+		<!-- Conclusions and future work-->
+		<section align="left">
+			<h2>Conclusions and Future Work</h2>
+			<ul>To conclude, we have
+				<ul>					
 					<li>Discussed the state of art in neural field modelling which largely restricts to 1- and 2-D planar domains</li>
 					<li>Looked at how to extend these ideas to non-planar domains, with a particular focus on those surfaces that do not admit an analytical representation of geodesic distances</li>
 					<li>Deployed CAD engneering technologies to solve a simple NFM on a torus</li> 
-					</ul><br>
+				</ul><br>
 						
-					<span class="fragment fade-in">
-					In the future we aim to
-					<ul>						
+				<span class="fragment fade-in">
+				In the future we aim to
+				<ul>						
 					<li>Calibrate introduced methodologies to construct efficient numerical solvers for upscaling to large-scale cortical geometries</li> 
 					<li>Pattern formation for non-local models on curved geometries</li>						
 					<li>Experiments on realistic cortical geometries including an exploration of the evolutionary role of cortical geometry on brain function</li>						
-					</ul>
-					</span>
 				</ul>
+				</span>
+			</ul>
 					
-				<aside class="notes">
-				<ul>
-					<li>Read slides</li>
-				</ul>
-				</aside>
-			</section>
-			<!-- ################################################### -->  			
+			<aside class="notes">
+			<ul>
+				<li>Read slides</li>
+			</ul>
+			</aside>
+		</section>
+		<!-- ################################################### -->  			
 				
 			
-			<!-- Aknowledgements-->
-			<section>
-				<section align="left">
-					<h2>Aknowledgements</h2>
-					
-					<leftSide style="width:60%;text-align:left">														
-						<h1 style="color:black">Collaborators <br> & Thank You!</h1>
-				
-						<br>
-						<p align="center"><mark>PHD student : Rebecca Martin</mark></p>
-						
-						<h2>References</h2>
-						<ul>
-							<li><a href="https://irep.ntu.ac.uk/id/eprint/31466/">Martin <em>et al.</em>, UKBIM 11, 2017</a></li>
-							<li><a href="https://link.springer.com/article/10.1007/s10827-018-0697-5">Martin <em>et al.</em>, J Comp. Neuro., 2018</a></li>
-						</ul>
-					</leftSide>
-						
-					<rightSide style="width:40%;text-align:left">			
-						<img
-						style="margin:0px;padding:0px;align:center"
-						data-src="images/JJCrofts.png" width="150" height="auto">										
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<img
-						style="margin:0px;padding:0px;align:center"
-						data-src="images/Chappell.png" width="147" height="auto">										
-						<br><br><br>
-						<img
-						style="margin:0px;padding:0px;align:center"
-						data-src="images/Martin.png" width="175" height="auto">														
-					</rightSide>																		
-					
-				</section>													
-				
-				<section align="center">
-				
-					<h2>Project funded by the Leverhulme Trust
-						<img style="margin:0px;padding:0px;align:center"
-							data-src="images/LT_Logo_Black.jpg" width="150" height="auto">
-					</h2>
-					
-					<img style="margin:20px;padding:0px;align:center"
-						data-src="images/LTProjPage.png" width="500" height="auto">
-					
-					<p><a href="https://www.leverhulme.ac.uk/research-project-grants/crofts">Research Project Grant RPG-2024-114</p>
-					
-				</section>													
-				
-			</section>				
-			
-			<!--
+		<!-- Aknowledgements-->
+		<section>
 			<section align="left">
+			<h2>Aknowledgements</h2>
+					
+			<leftSide style="width:60%;text-align:left">														
+			<h1 style="color:black">Collaborators <br> & Thank You!</h1>
+				
+			<br>
+			<p align="center"><mark>PHD student : Rebecca Martin</mark></p>
+						
+			<h2>References</h2>
+			<ul>
+				<li><a href="https://irep.ntu.ac.uk/id/eprint/31466/">Martin <em>et al.</em>, UKBIM 11, 2017</a></li>
+				<li><a href="https://link.springer.com/article/10.1007/s10827-018-0697-5">Martin <em>et al.</em>, J Comp. Neuro., 2018</a></li>
+				<li><a href="https://irep.ntu.ac.uk/id/eprint/53971/">Mohammed <em>et al.</em>, UKBIM 14, 2025</a></li>
+			</ul>
+			</leftSide>
+						
+			<rightSide style="width:40%;text-align:left">			
+			<img style="margin:0px;padding:0px;align:center"
+				data-src="images/Chappell.png" width="150" height="auto">										
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<img style="margin:0px;padding:0px;align:center"
+				data-src="images/NeekarMohammed.png" width="147" height="auto">										
+			<br><br><br>
+			<img style="margin:0px;padding:0px;align:center"
+				data-src="images/Martin.png" width="175" height="auto">														
+			</rightSide>																		
+					
+			</section>													
+				
+			<section align="center">
+				
+			<h2>Project funded by the Leverhulme Trust
+			<img style="margin:0px;padding:0px;align:center"
+				data-src="images/LT_Logo_Black.jpg" width="150" height="auto">
+			</h2>
+					
+			<img style="margin:20px;padding:0px;align:center"
+				data-src="images/LTProjPage.png" width="500" height="auto">
+					
+			<p><a href="https://www.leverhulme.ac.uk/research-project-grants/crofts">Research Project Grant RPG-2024-114</p>
+					
+			</section>													
+				
+		</section>				
+			
+		<!--
+		<section align="left">
 					<h2>Where do we come in?</h2>
 					<ul>
 						<li>Three year <a href="https://www.leverhulme.ac.uk/">Leverhulme</a> funded project to study the impact of cortical geometry on brain function</li><br>
